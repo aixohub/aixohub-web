@@ -36,11 +36,6 @@ summaryLength = 140
 
 [menu]
 
-  [[menu.main]]
-    identifier = "archives"
-    name = "归档"
-    url = "/archives/"
-    weight = 3
 
   [[menu.main]]
     identifier = "about"
