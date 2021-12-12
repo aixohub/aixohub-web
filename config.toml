@@ -1,0 +1,50 @@
+baseURL = 'http://www.aixohub.com/'
+languageCode = 'zh-CN'
+title = 'Aixohub Blog'
+theme = "maupassant-hugo"
+
+## 保持分类的原始名字（false会做转小写处理）
+preserveTaxonomyNames = true
+## 是否禁止URL Path转小写
+disablePathToLower = true
+
+hasCJKLanguage = true
+summaryLength = 140
+
+
+[author]
+  name = "酷博nice"
+
+[params]
+  author = "酷博nice"
+  subtitle = "Java、移动互联网、项目管理、软件架构"
+  keywords = "酷博nice,java,博客,项目管理,软件架构,公众号,小程序"
+  description = "专注于IT互联网，包括但不限于Java、项目管理、抖音分析、软件架构等"
+  busuanzi = true #启用不算子网页统计
+  googleAd = "G-N6HFHTVWC8"  #ca-pub-xxxxxxxxxxxxxx
+  localSearch = true # 启用本地搜索
+
+  # 全局开关，你也可以在每一篇内容的 front matter 中针对单篇内容关闭或开启某些功能
+  toc = true  # 是否开启目录
+
+
+## 配置代码高亮
+[markup]
+  [markup.highlight]
+    lineNos = true
+    style = "github"
+
+[menu]
+
+  [[menu.main]]
+    identifier = "archives"
+    name = "归档"
+    url = "/archives/"
+    weight = 3
+
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about"
+    weight = 4
+
