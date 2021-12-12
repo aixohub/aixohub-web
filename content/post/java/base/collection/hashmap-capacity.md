@@ -1,5 +1,5 @@
 ---
-title: "java hashMap capacity"
+title: "java hashMap 的容量"
 date: 2021-12-12T01:18:05-05:00
 draft: false
 author: "wangpwm"
@@ -36,7 +36,7 @@ HashMap类中有以下主要成员变量：
 ### size 和 capacity
 
 HashMap中的size和capacity之间的区别其实解释起来也挺简单的。我们知道，HashMap就像一个“桶”，那么capacity就是这个桶“当前”最多可以装多少元素，而size表示这个桶已经装了多少元素。来看下以下代码：
-
+```java
         Map<String, String> map = new HashMap<String, String>();
         map.put("hollis", "hollischuang");
     
@@ -48,7 +48,7 @@ HashMap中的size和capacity之间的区别其实解释起来也挺简单的。�
         Field size = mapType.getDeclaredField("size");
         size.setAccessible(true);
         System.out.println("size : " + size.get(map));
-    
+```java  
 
 我们定义了一个新的HashMap，并想其中put了一个元素，然后通过反射的方式打印capacity和size。输出结果为：**capacity : 16、size : 1**
 
@@ -57,7 +57,7 @@ HashMap中的size和capacity之间的区别其实解释起来也挺简单的。�
 为什么我刚刚说capacity就是这个桶“当前”最多可以装多少元素呢？当前怎么理解呢。其实，HashMap是具有扩容机制的。在一个HashMap第一次初始化的时候，默认情况下他的容量是16，当达到扩容条件的时候，就需要进行扩容了，会从16扩容成32。
 
 我们知道，HashMap的重载的构造函数中，有一个是支持传入initialCapacity的，那么我们尝试着设置一下，看结果如何。
-
+```java
         Map<String, String> map = new HashMap<String, String>(1);
     
         Class<?> mapType = map.getClass();
@@ -79,7 +79,7 @@ HashMap中的size和capacity之间的区别其实解释起来也挺简单的。�
         Method capacity = mapType.getDeclaredMethod("capacity");
         capacity.setAccessible(true);
         System.out.println("capacity : " + capacity.invoke(map));
-    
+```
 
 分别执行以上3段代码，分别输出：**capacity : 2、capacity : 8、capacity : 16**。
 
@@ -102,7 +102,7 @@ loadFactor是装载因子，表示HashMap满的程度，默认值为0.75f，设�
 对于一个默认的HashMap来说，默认情况下，当其size大于12(16*0.75)时就会触发扩容。
 
 验证代码如下：
-
+```java
         Map<String, String> map = new HashMap<>();
         map.put("hollis1", "hollischuang");
         map.put("hollis2", "hollischuang");
@@ -150,7 +150,7 @@ loadFactor是装载因子，表示HashMap满的程度，默认值为0.75f，设�
         Field loadFactor = mapType.getDeclaredField("loadFactor");
         loadFactor.setAccessible(true);
         System.out.println("loadFactor : " + loadFactor.get(map));
-    
+ ```   
 
 输出结果：
 
